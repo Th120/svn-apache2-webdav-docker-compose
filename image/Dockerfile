@@ -12,10 +12,10 @@ RUN apk add --no-cache \
   && sed -i "s/;extension=ldap/extension=ldap/" /etc/php84/php.ini \
   && sed -i "s/^Listen 80$/Listen 8080/" /etc/apache2/httpd.conf \
   && sed -i "s/^#\?ServerAdmin.*$/ServerAdmin ${SERVER_ADMIN_EMAIL}/" /etc/apache2/httpd.conf \
-  && sed -i "s/^ErrorLog/d" /etc/apache2/httpd.conf \
-  && sed -i "s/^CustomLog/d" /etc/apache2/httpd.conf \
-  && mkdir -p /var/svn /run/apache2 /etc/apache2/svn-auth 
-  
+  && sed -i '/^[[:space:]]*ErrorLog/d' /etc/apache2/httpd.conf \
+  && sed -i '/^[[:space:]]*CustomLog/d' /etc/apache2/httpd.conf \
+  && mkdir -p /var/svn /run/apache2 /etc/apache2/svn-auth
+
 COPY dav_svn.authz dav_svn.passwd /etc/apache2/svn-auth/
 
 COPY zz-dav-svn.conf zz-logging.conf /etc/apache2/conf.d/
