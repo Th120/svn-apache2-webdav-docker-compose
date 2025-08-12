@@ -1,0 +1,27 @@
+services:
+  svn:
+    build: .
+    container_name: svn-server
+    restart: unless-stopped
+    volumes:
+      - svn_data:/var/svn
+    networks:
+      - traefik_local
+    labels:
+      - "traefik.enable=true"
+
+      # SVN over HTTPS
+      - "traefik.enable=true"
+      - "traefik.http.services.svn-service.loadbalancer.server.port=8080"
+      - "traefik.http.routers.svn-sec.tls=true"
+      - "traefik.http.routers.svn-sec.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.svn-sec.rule=Host(`svn.to4.co`)"
+      - "traefik.http.routers.svn-sec.entrypoints=web-secured"
+      - "traefik.http.routers.svn-sec.service=svn-service"
+
+volumes:
+  svn_data:
+
+networks:
+  traefik_local:
+    external: true
