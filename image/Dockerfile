@@ -12,13 +12,13 @@ RUN apk add --no-cache \
   && sed -i "s/;extension=ldap/extension=ldap/" /etc/php84/php.ini \
   && sed -i "s/^Listen 80$/Listen 8080/" /etc/apache2/httpd.conf \
   && sed -i "s/^#\?ServerAdmin.*$/ServerAdmin ${SERVER_ADMIN_EMAIL}/" /etc/apache2/httpd.conf \
-  && sed -i "s/^ErrorLog.*$//" /etc/apache2/httpd.conf \
-  && sed -i "s/^CustomLog.*$//" /etc/apache2/httpd.conf \
+  && sed -i "s/^ErrorLog/d" /etc/apache2/httpd.conf \
+  && sed -i "s/^CustomLog/d" /etc/apache2/httpd.conf \
   && mkdir -p /var/svn /run/apache2 /etc/apache2/svn-auth 
   
 COPY dav_svn.authz dav_svn.passwd /etc/apache2/svn-auth/
 
-COPY 99-dav-svn.conf 99-logging.conf /etc/apache2/conf.d/
+COPY zz-dav-svn.conf zz-logging.conf /etc/apache2/conf.d/
 
 RUN wget -qO /tmp/svnadmin.tar.gz https://github.com/mfreiholz/iF.SVNAdmin/archive/refs/heads/master.tar.gz \
   && mkdir -p /var/www/localhost/htdocs/svnadmin/data  \
