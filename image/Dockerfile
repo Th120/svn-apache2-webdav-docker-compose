@@ -20,7 +20,7 @@ COPY dav_svn.authz dav_svn.passwd /etc/apache2/svn-auth/
 
 COPY zz-dav-svn.conf zz-logging.conf /etc/apache2/conf.d/
 
-RUN wget -qO /tmp/svnadmin.tar.gz https://github.com/mfreiholz/iF.SVNAdmin/archive/refs/heads/master.tar.gz \
+RUN wget -qO /tmp/svnadmin.tar.gz https://github.com/Th120/iF.SVNAdmin/archive/refs/tags/v1.7.0-01.03.25-unofficial.tar.gz \
   && mkdir -p /var/www/localhost/htdocs/svnadmin/data  \
   && tar -xzf /tmp/svnadmin.tar.gz -C /var/www/localhost/htdocs/svnadmin --strip-components=1 \
   && rm -f /tmp/svnadmin.tar.gz 
