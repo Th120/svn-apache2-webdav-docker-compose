@@ -8,7 +8,7 @@ RUN apk add --no-cache \
       apache2 apache2-utils apache2-webdav mod_dav_svn \
       subversion \
       php84 php84-apache2 php84-json php84-session php84-ldap php84-xml \
-      wget bash \
+      wget \
   && sed -i "s/;extension=ldap/extension=ldap/" /etc/php84/php.ini \
   && sed -i "s/^Listen 80$/Listen 8080/" /etc/apache2/httpd.conf \
   && sed -i "s/^#\?ServerAdmin.*$/ServerAdmin ${SERVER_ADMIN_EMAIL}/" /etc/apache2/httpd.conf \
