@@ -1,10 +1,16 @@
 services:
   svn:
-    build: .
+    build:
+      context: ./image/
+      dockerfile: Dockerfile
+      args:
+        - SERVER_ADMIN_EMAIL=info@tactical-operations.net
     container_name: svn-server
     restart: unless-stopped
     volumes:
       - svn_data:/var/svn
+      - svnadmin_data:/var/www/localhost/htdocs/svnadmin/data
+      - svn_auth:/etc/apache2/svn-auth
     networks:
       - traefik_local
     labels:
@@ -21,6 +27,8 @@ services:
 
 volumes:
   svn_data:
+  svnadmin_data:
+  svn_auth:
 
 networks:
   traefik_local:

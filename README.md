@@ -6,16 +6,17 @@ It is intended to be reverse proxied by traefik (example in traefik dir, web net
 Since Linux admin stuff isn’t exactly one of my strengths, don’t trust everything I’m doing here — if you spot a problem, just let me know or open an issue.
 
 ## iF.SVNAdmin Config
-Available at /svnadmin  
-Configure adminpanel ASAP after startup!  
 
-| Key                                    | Value                       |
-| -------------------------------------- | --------------------------- |
-| Subversion authorization file          | /etc/apache2/dav_svn.authz  |
-| User authentication file (SVNUserFile) | /etc/apache2/dav_svn.passwd |
-| Parent directory of the repositories   | /var/svn                    |
-| Subversion client executable           | /usr/bin/svn                |
-| Subversion admin executable            | /usr/bin/svnadmin           |
+Available at /svnadmin  
+Configure adminpanel ASAP after startup!
+
+| Key                                    | Value                                |
+| -------------------------------------- | ------------------------------------ |
+| Subversion authorization file          | /etc/apache2/svn-auth/dav_svn.authz  |
+| User authentication file (SVNUserFile) | /etc/apache2/svn-auth/dav_svn.passwd |
+| Parent directory of the repositories   | /var/svn                             |
+| Subversion client executable           | /usr/bin/svn                         |
+| Subversion admin executable            | /usr/bin/svnadmin                    |
 
 DO NOT FORGET TO ASSIGN A NEW PASSWORD AFTER INITIAL LOGIN!!!
 
