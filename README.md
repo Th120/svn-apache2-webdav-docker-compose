@@ -20,7 +20,7 @@ Configure adminpanel ASAP after startup!
 
 DO NOT FORGET TO ASSIGN A NEW PASSWORD AFTER INITIAL LOGIN!!!
 
-### Configure
+### More configuration
 
 It seems some settings like repo delete can only be changed by editing the config.ini
 
