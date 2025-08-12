@@ -6,8 +6,8 @@ It is intended to be reverse proxied by traefik (example in traefik dir, web net
 Since Linux admin stuff isn’t exactly one of my strengths, don’t trust everything I’m doing here — if you spot a problem, just let me know or open an issue.
 
 ## iF.SVNAdmin Config
-
-Configure adminpanel ASAP after startup!
+Available at /svnadmin  
+Configure adminpanel ASAP after startup!  
 
 | Key                                    | Value                       |
 | -------------------------------------- | --------------------------- |
