@@ -20,6 +20,21 @@ Configure adminpanel ASAP after startup!
 
 DO NOT FORGET TO ASSIGN A NEW PASSWORD AFTER INITIAL LOGIN!!!
 
+### Configure
+
+It seems some settings like repo delete can only be changed by editing the config.ini
+
+```bash
+# stop svn before attaching to other container
+sudo docker compose down
+# mount in other container to edit from there
+sudo docker run --rm -it -v svn-apache2-webdav-docker-compose_svnadmin_data:/data ubuntu bash
+# within ubuntu container
+apt update && apt install nano && nano /data/config.ini
+
+```
+
 ## Shoutouts
 
-This repo is loosely based on https://github.com/elleFlorio/svn-docker which has been discontinued (sadly).
+Admin gui: [iF.SVNAdmin](https://github.com/mfreiholz/iF.SVNAdmin)  
+This repo is loosely based on [elleFlorio/svn-docker](https://github.com/elleFlorio/svn-docker) which has been discontinued (sadly).
