@@ -12,24 +12,21 @@ services:
       - svnadmin_data:/var/www/localhost/htdocs/svnadmin/data
       - svn_auth:/etc/apache2/svn-auth
     networks:
-      - traefik_local
+      - local
     labels:
       - "traefik.enable=true"
-
-      # SVN over HTTPS
-      - "traefik.enable=true"
+      - "traefik.docker.network=local"
       - "traefik.http.services.svn-service.loadbalancer.server.port=8080"
       - "traefik.http.routers.svn-sec.tls=true"
       - "traefik.http.routers.svn-sec.tls.certresolver=letsencrypt"
       - "traefik.http.routers.svn-sec.rule=Host(`svn.to4.co`)"
-      - "traefik.http.routers.svn-sec.entrypoints=web-secured"
+      - "traefik.http.routers.svn-sec.entrypoints=web-secure"
       - "traefik.http.routers.svn-sec.service=svn-service"
-
 volumes:
   svn_data:
   svnadmin_data:
   svn_auth:
 
 networks:
-  traefik_local:
+  local:
     external: true
